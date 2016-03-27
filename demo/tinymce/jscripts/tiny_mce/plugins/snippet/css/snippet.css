@@ -1,0 +1,8 @@
+td.snippet_list .mceIcon {
+	background-position: right center !important;
+	background-repeat: no-repeat !important;
+	width: 22px !important;
+}
+td.snippet_list .mceText {
+	padding-left: 25px !important;
+}

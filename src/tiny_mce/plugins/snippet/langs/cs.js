@@ -1,0 +1,1 @@
+tinyMCE.addI18n('cs.snippet',{title:"Vložit"});

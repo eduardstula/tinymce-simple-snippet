@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TinyMCE 3.x Simple Snippet example</title>
+
+    <script src="./tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+
+    <script type="text/javascript">
+        var snippet_data = [
+            {
+                title: "Czech Republic",
+                value: "",
+                items: [
+                    {
+                        title: "West Bohemia",
+                        value: "",
+                        items: [
+                            {
+                                title: "Mariánské Lázně",
+                                value: "City: Mariánské Lázně"
+                            },
+                            {
+                                title: "Plzeň",
+                                value: "City: Plzeň"
+                            },
+                            {
+                                title: "Karlovy Vary",
+                                value: "City: Karlovy Vary"
+                            }
+                        ]
+                    },
+                    {
+                        title: "East Bohemia",
+                        value: "",
+                        items: [
+                            {
+                                title: "Hradec Králové",
+                                value: "City: Hradec Králové"
+                            },
+                            {
+                                title: "Pardubice",
+                                value: "City: Pardubice"
+                            },
+                            {
+                                title: "Lytomyšl",
+                                value: "City: Lytomyšl"
+                            }
+
+                        ]
+                    }
+                ]
+            },
+            {
+                title: "Deutschland",
+                value: "",
+                items: [
+                    {
+                        title: "Bayern",
+                        value: "",
+                        items: [
+                            {
+                                title: "München",
+                                value: "City: München"
+                            },
+                            {
+                                title: "Nürnberg",
+                                value: "City: Nürnberg"
+                            },
+                            {
+                                title: "Augsburg",
+                                value: "City: Augsburg"
+                            },
+                            {
+                                title: "Regensburg",
+                                value: "City: Regensburg"
+                            }
+                        ]
+                    },
+                    {
+                        title: "Hessen",
+                        value: "",
+                        items: [
+                            {
+                                title: "Frankfurt am Main",
+                                value: "City: Frankfurt am Main"
+                            },
+                            {
+                                title: "Wiesbaden",
+                                value: "City: Wiesbaden"
+                            },
+                            {
+                                title: "Kassel",
+                                value: "City: Kassel"
+                            }
+
+                        ]
+                    }
+                ]
+            },
+            {
+                title: "Poland",
+                value: "",
+                items: [
+                    {
+                        title: "Warszawa",
+                        value: "City: Warszawa"
+                    }
+                ]
+            }
+        ];
+
+        tinyMCE.init({
+            mode: "textareas",
+            plugins: "snippet",
+            snippet_list: snippet_data,
+            theme_advanced_buttons2_add_before: "snippetmenu,|"
+        });
+    </script>
+</head>
+<body>
+<h1>TinyMCE 3.x Simple Snippet example</h1>
+<label>
+    <textarea name="text" id="tinymce">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed magna turpis. Integer enim augue, tristique nec dui a, finibus imperdiet diam.</textarea>
+</label>
+</body>
+</html>
