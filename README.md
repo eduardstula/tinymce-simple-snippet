@@ -42,12 +42,12 @@ You must define data source `snippet_data`. Source must be defined before `tinyM
                     value: "",
                     items: [
                         {
-                            title: "Mariánské Láznì",
-                            value: "City: Mariánské Láznì"
+                            title: "MariÃ¡nskÃ© LÃ¡znÄ›",
+                            value: "City: MariÃ¡nskÃ© LÃ¡znÄ›"
                         },
                         {
-                            title: "Plzeò",
-                            value: "City: Plzeò"
+                            title: "PlzeÅˆ",
+                            value: "City: PlzeÅˆ"
                         },
                         {
                             title: "Karlovy Vary",

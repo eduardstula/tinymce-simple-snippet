@@ -1,1 +1,1 @@
-tinyMCE.addI18n('en.snippet',{title:"My snippets"});
+tinyMCE.addI18n('en.snippet',{title:"Insert"});
