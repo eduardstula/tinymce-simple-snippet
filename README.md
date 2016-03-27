@@ -16,12 +16,12 @@ dropdown **multilevel menu**
 - Define param `snippet_list`
 - Insert the button `snippetmenu`
 ```
-        tinyMCE.init({
-            mode: "textareas",
-            plugins: "snippet",
-            snippet_list: snippet_data,
-            theme_advanced_buttons2_add_before: "snippetmenu,|"
-        });
+tinyMCE.init({
+    mode: "textareas",
+    plugins: "snippet",
+    snippet_list: snippet_data,
+    theme_advanced_buttons2_add_before: "snippetmenu,|"
+});
 ```
 ## Data
 
@@ -32,31 +32,31 @@ You must define data source `snippet_data`. Source must be defined before `tinyM
 * `items` = submenu = array of menu items
 
 ```
-        var snippet_data = [
+var snippet_data = [
+{
+    title: "Czech Republic",
+    value: "",
+    items: [
         {
-            title: "Czech Republic",
+            title: "West Bohemia",
             value: "",
             items: [
                 {
-                    title: "West Bohemia",
-                    value: "",
-                    items: [
-                        {
-                            title: "Mariánské Lázně",
-                            value: "City: Mariánské Lázně"
-                        },
-                        {
-                            title: "Plzeň",
-                            value: "City: Plzeň"
-                        },
-                        {
-                            title: "Karlovy Vary",
-                            value: "City: Karlovy Vary"
-                        }
-                    ]
-                }]
-        }
-        ];
+                    title: "Mariánské Lázně",
+                    value: "City: Mariánské Lázně"
+                },
+                {
+                    title: "Plzeň",
+                    value: "City: Plzeň"
+                },
+                {
+                    title: "Karlovy Vary",
+                    value: "City: Karlovy Vary"
+                }
+            ]
+        }]
+}
+];
 ```
 
 ## Demo
