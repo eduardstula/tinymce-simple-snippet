@@ -1,7 +1,9 @@
 # TinyMCE Simple Snippet plugin
-TinyMCE Simple Snippet plugin create simple multi level dropdown menu for inserting custom HTML code or plain text templates into your text.
+TinyMCE Simple Snippet plugin create simple multi level dropdown menu for inserting custom HTML code or plain text into your text.
 
 This version supports ***TinyMCE 3.x***.
+
+New version of the plugin for TinyMCE 4.x: https://github.com/eduardstula/tinymce-4-snippet-plugin.
 
 ## Screenshot
 dropdown **multilevel menu**
