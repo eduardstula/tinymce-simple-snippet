@@ -18,7 +18,11 @@
                         items: [
                             {
                                 title: "Mariánské Lázně",
-                                value: "City: Mariánské Lázně"
+                                value: "City: Mariánské Lázně",
+                                onSelect: function (item) {
+                                    console.log(item.title);
+                                    console.log(item.value);
+                                }
                             },
                             {
                                 title: "Plzeň",

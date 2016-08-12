@@ -1,5 +1,5 @@
 # TinyMCE Simple Snippet plugin
-TinyMCE Simple Snippet plugin create simple multi level dropdown menu for inserting custom HTML code or plain text into your text.
+TinyMCE Simple Snippet plugin create simple multi level dropdown menu for inserting custom HTML code or plain text templates into your text.
 
 This version supports ***TinyMCE 3.x***.
 
@@ -9,7 +9,7 @@ dropdown **multilevel menu**
 ![image](screenshot.png)
 
 ## Install
-* Copy plugin folder **src/tiny_mce/plugings/snippet** to your TinyMCE plugin folder (etc. tiny_mce/plugins/)
+* Copy plugin folder **src/tiny_mce/plugings/snippet** to your TinyMCE plugin folder (etc. tiny_mce/plugins/).
 
 ## Configuration
 - Add `snippet` to param *plugins*
@@ -30,7 +30,6 @@ You must define data source `snippet_data`. Source must be defined before `tinyM
 * `title` = menu item title
 * `value` = HTML or plain text that will be inserted
 * `items` = submenu = array of menu items
-* `onSelect` = callback function when selecting
 
 ```
 var snippet_data = [
@@ -44,10 +43,7 @@ var snippet_data = [
             items: [
                 {
                     title: "Mariánské Lázně",
-                    value: "City: Mariánské Lázně",
-                    onSelect: function () {
-                        console.log("the best place in the world");
-                    }
+                    value: "City: Mariánské Lázně"
                 },
                 {
                     title: "Plzeň",
@@ -58,6 +54,34 @@ var snippet_data = [
                     value: "City: Karlovy Vary"
                 }
             ]
+        }]
+}
+];
+```
+## Events
+
+
+You can use the callback function:
+
+* `onSelect` = callback function when selecting
+
+```
+var snippet_data = [
+{
+    title: "Cities",
+    value: "",
+    items: [
+        {
+            title: "Pilsen",
+            value: "49.746955, 13.377288",
+            onSelect: function (item) {
+            
+                //menu item name => Pilsen
+                console.log(item.title);
+                
+                //menu item value => 49.746955, 13.377288
+                console.log(item.value);
+            }
         }]
 }
 ];

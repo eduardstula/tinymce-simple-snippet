@@ -32,50 +32,51 @@
                         icons: false
                     });
 
-                    function addItems(data, c, m, level) {
-
-                        if (typeof level === "undefined") {
-                            level = 0;
+                function selectEvent(g) {
+                    return function () {
+                        tinyMCE.activeEditor.execCommand('mceInsertContent', false, g.value);
+                        if (typeof g.onSelect === "function") {
+                            g.onSelect(g);
                         }
+                    };
+                }
 
-                        for (var i = 0; i < data.length; i++) {
+                function addItems(data, c, m, level) {
 
-                            // Create submenu
-                            if (typeof data[i].items !== "undefined") {
+                    if (typeof level === "undefined") {
+                        level = 0;
+                    }
 
-                                var sub = m.addMenu({title: data[i].title});
+                    for (var i = 0; i < data.length; i++) {
 
-                                if (level > 1
-                                    && typeof data[i].value !== "undefined"
-                                    && data[i].value !== ""
-                                ) {
-                                    sub.add({
-                                        title: data[i].title,
-                                        onclick: function (g) {
-                                            return function () {
-                                                tinyMCE.activeEditor.execCommand('mceInsertContent', false, g);
-                                            };
-                                        }(data[i].value)
-                                    });
-                                    sub.addSeparator();
-                                }
+                        // Create submenu
+                        if (typeof data[i].items !== "undefined") {
 
-                                level++;
-                                addItems(data[i].items, c, sub, level);
-                            }
-                            // Create action button
-                            else {
-                                m.add({
+                            var sub = m.addMenu({title: data[i].title});
+
+                            if (level > 1
+                                && typeof data[i].value !== "undefined"
+                                && data[i].value !== ""
+                            ) {
+                                sub.add({
                                     title: data[i].title,
-                                    onclick: function (g) {
-                                        return function () {
-                                            tinyMCE.activeEditor.execCommand('mceInsertContent', false, g);
-                                        };
-                                    }(data[i].value)
+                                    onclick: selectEvent(data[i])
                                 });
+                                sub.addSeparator();
                             }
+
+                            level++;
+                            addItems(data[i].items, c, sub, level);
+                        }
+                        // Create action button
+                        else {
+                            m.add({
+                                title: data[i].title,
+                                onclick: selectEvent(data[i])
+                            });
                         }
                     }
+                }
 
                     if (typeof s_data !== "undefined") {
                         c.onRenderMenu.add(function (c, m) {

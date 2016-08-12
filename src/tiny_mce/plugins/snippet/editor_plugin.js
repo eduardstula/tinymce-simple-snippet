@@ -32,6 +32,15 @@
                         icons: false
                     });
 
+                function selectEvent(g) {
+                    return function () {
+                        tinyMCE.activeEditor.execCommand('mceInsertContent', false, g.value);
+                        if (typeof g.onSelect === "function") {
+                            g.onSelect(g);
+                        }
+                    };
+                }
+
                 function addItems(data, c, m, level) {
 
                     if (typeof level === "undefined") {
@@ -51,14 +60,7 @@
                             ) {
                                 sub.add({
                                     title: data[i].title,
-                                    onclick: function (g) {
-                                        return function () {
-                                            tinyMCE.activeEditor.execCommand('mceInsertContent', false, g.value);
-                                            if(typeof g.onSelect !== "undefined") {
-                                                g.onSelect();
-                                            }
-                                        };
-                                    }(data[i])
+                                    onclick: selectEvent(data[i])
                                 });
                                 sub.addSeparator();
                             }
@@ -70,14 +72,7 @@
                         else {
                             m.add({
                                 title: data[i].title,
-                                onclick: function (g) {
-                                    return function () {
-                                        tinyMCE.activeEditor.execCommand('mceInsertContent', false, g.value);
-                                        if(typeof g.onSelect !== "undefined") {
-                                            g.onSelect();
-                                        }
-                                    };
-                                }(data[i])
+                                onclick: selectEvent(data[i])
                             });
                         }
                     }
