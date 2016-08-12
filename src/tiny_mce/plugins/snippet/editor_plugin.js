@@ -32,50 +32,56 @@
                         icons: false
                     });
 
-                    function addItems(data, c, m, level) {
+                function addItems(data, c, m, level) {
 
-                        if (typeof level === "undefined") {
-                            level = 0;
-                        }
+                    if (typeof level === "undefined") {
+                        level = 0;
+                    }
 
-                        for (var i = 0; i < data.length; i++) {
+                    for (var i = 0; i < data.length; i++) {
 
-                            // Create submenu
-                            if (typeof data[i].items !== "undefined") {
+                        // Create submenu
+                        if (typeof data[i].items !== "undefined") {
 
-                                var sub = m.addMenu({title: data[i].title});
+                            var sub = m.addMenu({title: data[i].title});
 
-                                if (level > 1
-                                    && typeof data[i].value !== "undefined"
-                                    && data[i].value !== ""
-                                ) {
-                                    sub.add({
-                                        title: data[i].title,
-                                        onclick: function (g) {
-                                            return function () {
-                                                tinyMCE.activeEditor.execCommand('mceInsertContent', false, g);
-                                            };
-                                        }(data[i].value)
-                                    });
-                                    sub.addSeparator();
-                                }
-
-                                level++;
-                                addItems(data[i].items, c, sub, level);
-                            }
-                            // Create action button
-                            else {
-                                m.add({
+                            if (level > 1
+                                && typeof data[i].value !== "undefined"
+                                && data[i].value !== ""
+                            ) {
+                                sub.add({
                                     title: data[i].title,
                                     onclick: function (g) {
                                         return function () {
-                                            tinyMCE.activeEditor.execCommand('mceInsertContent', false, g);
+                                            tinyMCE.activeEditor.execCommand('mceInsertContent', false, g.value);
+                                            if(typeof g.onSelect !== "undefined") {
+                                                g.onSelect();
+                                            }
                                         };
-                                    }(data[i].value)
+                                    }(data[i])
                                 });
+                                sub.addSeparator();
                             }
+
+                            level++;
+                            addItems(data[i].items, c, sub, level);
+                        }
+                        // Create action button
+                        else {
+                            m.add({
+                                title: data[i].title,
+                                onclick: function (g) {
+                                    return function () {
+                                        tinyMCE.activeEditor.execCommand('mceInsertContent', false, g.value);
+                                        if(typeof g.onSelect !== "undefined") {
+                                            g.onSelect();
+                                        }
+                                    };
+                                }(data[i])
+                            });
                         }
                     }
+                }
 
                     if (typeof s_data !== "undefined") {
                         c.onRenderMenu.add(function (c, m) {
