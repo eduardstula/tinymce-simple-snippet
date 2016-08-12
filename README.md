@@ -1,7 +1,7 @@
 # TinyMCE Simple Snippet plugin
 TinyMCE Simple Snippet plugin create simple multi level dropdown menu for inserting custom HTML code or plain text into your text.
 
-This version supports ***TinyMCE 3.x***. TinyMCE 4.x coming soon.
+This version supports ***TinyMCE 3.x***.
 
 ## Screenshot
 dropdown **multilevel menu**
@@ -9,7 +9,7 @@ dropdown **multilevel menu**
 ![image](screenshot.png)
 
 ## Install
-* Copy plugin folder **src/tiny_mce/plugings/snippet** to your TinyMCE folder
+* Copy plugin folder **src/tiny_mce/plugings/snippet** to your TinyMCE plugin folder (etc. tiny_mce/plugins/)
 
 ## Configuration
 - Add `snippet` to param *plugins*
@@ -30,6 +30,7 @@ You must define data source `snippet_data`. Source must be defined before `tinyM
 * `title` = menu item title
 * `value` = HTML or plain text that will be inserted
 * `items` = submenu = array of menu items
+* `onSelect` = callback function when selecting
 
 ```
 var snippet_data = [
@@ -43,7 +44,10 @@ var snippet_data = [
             items: [
                 {
                     title: "Mariánské Lázně",
-                    value: "City: Mariánské Lázně"
+                    value: "City: Mariánské Lázně",
+                    onSelect: function () {
+                        console.log("the best place in the world");
+                    }
                 },
                 {
                     title: "Plzeň",
