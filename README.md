@@ -93,4 +93,4 @@ var snippet_data = [
 
 See the demo.
 
-`/demo/index.html`
+https://eduardstula.cz/demo/tinymce-simple-snippet/
